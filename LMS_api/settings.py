@@ -76,24 +76,24 @@ WSGI_APPLICATION = 'LMS_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'NAME': "railway",
-       'USER': 'postgres',
-       'PASSWORD': 'xge0ZP8CahVs0yPxrPmo',
-       'HOST': 'containers-us-west-106.railway.app',
-       'PORT': '7456',
-   }
-}
-
-
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': "railway",
+#        'USER': 'postgres',
+#        'PASSWORD': 'NtmY1kWkefXPRNGVa9e4',
+#        'HOST': 'containers-us-west-191.railway.app',
+#        'PORT': '5924',
+#    }
 # }
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 # Password validation
