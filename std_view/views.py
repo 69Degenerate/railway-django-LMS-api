@@ -3,6 +3,7 @@ from django.shortcuts import render,redirect
 from admin_view import views
 from .models import log as logs
 from admin_view.models import library
+from django.db.models import Q
 from django.contrib import messages
 
 
@@ -20,10 +21,9 @@ def signin(request):
             name = request.POST.get('username')
             p = request.POST.get('password')
             print(name,' ',p)
-            re=logs.objects.filter(uname=name,pas=p)|logs.objects.filter(email=name,pas=p)
+            re=logs.objects.get(Q(pas=p)&(Q(uname=name)|Q(email=name)))
             if re:
-                # print('loggedin')
-                # return render(request,"signin.html")
+                request.session['user_id'] = re.pk
                 return redirect(views.readall)
             else:
                 print(re)

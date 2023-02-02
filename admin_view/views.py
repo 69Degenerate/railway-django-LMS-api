@@ -1,3 +1,4 @@
+from django.contrib.auth import logout
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import library
@@ -43,6 +44,10 @@ def create(request):
 # perform CRUD operations on library database
 # read all available records with api
 def readall(request):
+    user_id = request.session.get('user_id')
+    if not user_id:
+        return redirect('signin')
+    # del request.session['user_id']
     books=library.objects.all()
     context={'books':books}
     return render(request,'view.html',context)
@@ -89,3 +94,7 @@ def delete(request,pk):
     return redirect('readall')
 
 
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
